@@ -2,7 +2,7 @@ var username = localStorage.getItem('username');
 var isLoggedIn = username !== null;
 
 if (!isLoggedIn) {
-    window.location.href = 'Регистрация.html';
+    window.location.href = 'регистрация.html';
 }
 alert("Привет пользователь, " + username + "!");
 
