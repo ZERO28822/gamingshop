@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата</title>
+    <style>
+        /* Стили здесь */
+        .payment-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .game-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .game-item p {
+            margin: 5px 0;
+        }
+        .remove-button {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .total-price {
+            margin-bottom: 20px;
+        }
+        .pay-button {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        @keyframes color {
+  0%   { background: #33CCCC; }
+  20%  { background: #5d915e; }
+  40%  { background: #727a3d; }
+  60%  { background: #e7cc5d; }
+  80%  { background: #1c311d; }
+  100% { background: #37fcfc; }
+}
+
+body {
+  background: #33CCCC; /* Fallback */
+  animation: color 9s infinite linear;
+  text-align: center;
+  padding: 2em;
+}
+h1 {
+  text-align: center;
+  font-family: 'Kavoon', sans-serif;
+  font-size: 2.5em;
+  color: white;
+}
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h2>Оплата</h2>
+        <div class="game-list" id="gameList">
+            
+        </div>
+        <div class="total-price" id="totalPrice">
+            
+        </div>
+        <button class="pay-button" onclick="pay()">Оплатить</button>
+    </div>
+
+    <script>
+        
+        var gameList = document.getElementById('gameList');
+        var totalPriceElement = document.getElementById('totalPrice');
+
+        
+        var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        
+        
+        cartItems.forEach(function(item, index) {
+            var gameItem = document.createElement('div');
+            gameItem.classList.add('game-item');
+
+            var gameInfo = document.createElement('p');
+            gameInfo.textContent = item.name + ' - Цена: ₽' + item.price;
+            gameItem.appendChild(gameInfo);
+
+            var removeButton = document.createElement('button');
+            removeButton.classList.add('remove-button');
+            removeButton.textContent = '×';
+            removeButton.onclick = function() {
+               
+                gameItem.remove();
+                
+                cartItems.splice(index, 1);
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                
+                updateTotalPrice();
+            };
+            gameItem.appendChild(removeButton);
+
+            gameList.appendChild(gameItem);
+        });
+
+        
+        function updateTotalPrice() {
+            var totalPrice = cartItems.reduce(function(total, item) {
+                return total + parseInt(item.price);
+            }, 0);
+            totalPriceElement.textContent = 'Общая сумма к оплате: ₽' + totalPrice.toFixed(2);
+        }
+        updateTotalPrice(); 
+
+        
+        function pay() {
+            window.location.href = 'новая_страница.html';
+        }
+    </script>
+</body>
+</html>

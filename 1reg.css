@@ -1,0 +1,36 @@
+#registrationForm {
+    max-width: 300px; /* Максимальная ширина формы */
+    margin: 0 auto; /* Центрирование формы по горизонтали */
+    padding: 20px; /* Внутренний отступ */
+    background-color: #f4f4f4; /* Цвет фона формы */
+    border-radius: 5px; /* Закругленные углы формы */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень формы */
+}
+
+/* Стили для текстовых полей ввода */
+#registrationForm input[type="text"],
+#registrationForm input[type="email"],
+#registrationForm input[type="password"] {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    box-sizing: border-box; 
+}
+
+
+#registrationForm button[type="submit"] {
+    width: 100%; 
+    padding: 10px; 
+    background-color: #4caf50; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+/* Стили для кнопки отправки формы при наведении */
+#registrationForm button[type="submit"]:hover {
+    background-color: #45a049; /* Цвет фона кнопки при наведении */
+}

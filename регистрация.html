@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Registration</title>
+<link rel="stylesheet" href="1reg.css"
+</head>
+<body>
+    <h2 style="
+  font-family: 'Monp', Gabriola;
+  font-size: 28px;
+  line-height: 1.6;
+  color: #333;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+">Для использования нашего сайта нужно пройти регистрацию!</h2>
+    <form id="registrationForm">
+        <label for="username">Имя пользователя:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="email">Эмайл:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Пароль:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var username = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var avatar = 'user.jpg'; // Путь к вашей картинке
+
+    localStorage.setItem('username', username);
+    localStorage.setItem('email', email);
+    localStorage.setItem('password', password);
+    localStorage.setItem('avatar', avatar); // Записываем путь к картинке в LocalStorage
+
+    window.location.href = 'index.html';
+});
+    </script>
+</body>
+</html>

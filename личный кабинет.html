@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>личный кабинет</title>
+    <link rel="stylesheet" href="1.css">
+<script src="1.js"></script>
+</head>
+<body>
+    <nav>
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="О нас.html">О нас</a></li>
+          <li><a href="Магазин.html">Магазин</a></li>
+          <li><a href="Контакты.html">Обратная связь</a></li>
+          <li><a href="#">Регистрация</a></li>
+          <li class="right-align"><a href="личный кабинет.html">Личный кабинет</a></li>
+        </ul>
+      </nav>
+<div class="hero">
+    <div id="output">
+        <div id="username" class="user-info"></div>
+        <div id="email" class="user-info"></div>
+        <img id="avatar">
+<select id="avatarSelect">
+    <option value="user.jpg">Avatar 1</option>
+    <option value="avatar.jpg">Avatar 2</option>
+    <option value="anime.gif">Avatar 3</option>
+    <!-- Добавьте другие варианты по мере необходимости -->
+</select>
+        <form id="changeForm">
+            <label for="newUsername">New Username:</label>
+            <input type="text" id="newUsername" name="newUsername"><br>
+            <label for="newEmail">New Email:</label>
+            <input type="email" id="newEmail" name="newEmail"><br>
+            <button type="submit">Change</button>
+        </form>
+    </div>
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+      <div class="cube"></div>
+    </div>
+      <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>OOO"ZERO"</p>
+                <p>Site created by ZERO(Даниил Караваев)</p>
+            </div>
+        </div>
+    </footer>
+    
+
+
+
+
+
+
+
+
+
+<script>
+      var outputDiv = document.getElementById('output');
+        var usernameDiv = document.getElementById('username');
+        var emailDiv = document.getElementById('email');
+        var avatarImg = document.getElementById('avatar');
+        var changeForm = document.getElementById('changeForm');
+
+        // Check if there is data in local storage
+        if(localStorage.getItem('username') && localStorage.getItem('email') && localStorage.getItem('avatar')) {
+            // Get data from local storage
+            var username = localStorage.getItem('username');
+            var email = localStorage.getItem('email');
+            var avatar = localStorage.getItem('avatar');
+
+            // Display username
+            usernameDiv.textContent = 'Username: ' + username;
+
+            // Display email
+            emailDiv.textContent = 'Email: ' + email;
+
+            // Display avatar
+            avatarImg.src = avatar;
+        } else {
+            outputDiv.textContent = 'No data found in local storage.';
+        }
+
+        // Handle form submission
+        changeForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get new username and email
+            var newUsername = document.getElementById('newUsername').value;
+            var newEmail = document.getElementById('newEmail').value;
+
+            // Update local storage
+            localStorage.setItem('username', newUsername);
+            localStorage.setItem('email', newEmail);
+
+            // Update displayed username and email
+            usernameDiv.textContent = 'Username: ' + newUsername;
+            emailDiv.textContent = 'Email: ' + newEmail;
+
+            // Reset form
+            changeForm.reset();
+        });
+var avatarSelect = document.getElementById('avatarSelect');
+
+// Обработчик события для изменения изображения при выборе из списка
+avatarSelect.addEventListener('change', function() {
+    var selectedAvatar = avatarSelect.value;
+    avatarImg.src = selectedAvatar;
+    // Обновление данных в локальном хранилище, если необходимо сохранять выбор пользователя
+    localStorage.setItem('avatar', selectedAvatar);
+});
+</script>
+</body>
+</html>
